@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/layout/Header';
 import ListaHoteles from './pages/ListaHoteles';
 import DetalleHotel from './pages/DetalleHotel';
 import './App.css';
@@ -7,6 +8,7 @@ function App() {
     return (
         <BrowserRouter>
             <div className="App">
+                <Header />
                 <Routes>
                     <Route path="/" element={<ListaHoteles />} />
                     <Route path="/hotel/:id" element={<DetalleHotel />} />
