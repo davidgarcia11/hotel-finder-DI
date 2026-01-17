@@ -1,0 +1,510 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "nombre": "Hotel Paradise",
+      "ciudad": "Barcelona",
+      "direccion": "Paseo de Gracia, 123",
+      "descripcion": "Hotel moderno en el corazón de Barcelona con vistas espectaculares a la ciudad.",
+      "imagen": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      "valoracion": 4.5,
+      "estrellas": 4,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "piscina", "gimnasio", "parking", "spa"],
+      "habitaciones": [
+        {
+          "id": 1,
+          "tipo": "Individual",
+          "precio": 80,
+          "desayunoIncluido": false,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 2,
+          "tipo": "Doble",
+          "precio": 120,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 3,
+          "tipo": "Suite",
+          "precio": 200,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Hotel Plaza Real",
+      "ciudad": "Madrid",
+      "direccion": "Gran Vía, 45",
+      "descripcion": "Elegante hotel en pleno centro de Madrid, perfecto para turismo y negocios.",
+      "imagen": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      "valoracion": 4.2,
+      "estrellas": 3,
+      "aceptaMascotas": false,
+      "servicios": ["wifi", "restaurante", "parking"],
+      "habitaciones": [
+        {
+          "id": 4,
+          "tipo": "Individual",
+          "precio": 65,
+          "desayunoIncluido": true,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 5,
+          "tipo": "Doble",
+          "precio": 95,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Costa del Sol Resort",
+      "ciudad": "Málaga",
+      "direccion": "Avenida del Mar, 78",
+      "descripcion": "Resort frente al mar con todas las comodidades para unas vacaciones inolvidables.",
+      "imagen": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800",
+      "valoracion": 4.8,
+      "estrellas": 5,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "piscina", "playa privada", "spa", "restaurante", "parking"],
+      "habitaciones": [
+        {
+          "id": 6,
+          "tipo": "Doble",
+          "precio": 150,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 7,
+          "tipo": "Suite",
+          "precio": 280,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        },
+        {
+          "id": 8,
+          "tipo": "Suite Premium",
+          "precio": 350,
+          "desayunoIncluido": true,
+          "capacidad": 6,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Hostal El Camino",
+      "ciudad": "Valencia",
+      "direccion": "Calle del Mercado, 12",
+      "descripcion": "Hostal económico y céntrico, ideal para mochileros y viajeros con presupuesto ajustado.",
+      "imagen": "https://images.unsplash.com/photo-1455587734955-081b22074882?w=800",
+      "valoracion": 3.8,
+      "estrellas": 2,
+      "aceptaMascotas": false,
+      "servicios": ["wifi"],
+      "habitaciones": [
+        {
+          "id": 9,
+          "tipo": "Individual",
+          "precio": 35,
+          "desayunoIncluido": false,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 10,
+          "tipo": "Doble",
+          "precio": 50,
+          "desayunoIncluido": false,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Gran Hotel Bilbao",
+      "ciudad": "Bilbao",
+      "direccion": "Plaza Mayor, 8",
+      "descripcion": "Hotel histórico renovado con elegancia contemporánea en el centro de Bilbao.",
+      "imagen": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
+      "valoracion": 4.6,
+      "estrellas": 4,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "gimnasio", "restaurante", "bar", "parking"],
+      "habitaciones": [
+        {
+          "id": 11,
+          "tipo": "Individual",
+          "precio": 90,
+          "desayunoIncluido": true,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 12,
+          "tipo": "Doble",
+          "precio": 130,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 13,
+          "tipo": "Suite",
+          "precio": 220,
+          "desayunoIncluido": true,
+          "capacidad": 3,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Hotel Alhambra",
+      "ciudad": "Granada",
+      "direccion": "Calle Real de la Alhambra, 20",
+      "descripcion": "Hotel con vistas a la Alhambra, fusionando tradición árabe con confort moderno.",
+      "imagen": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800",
+      "valoracion": 4.7,
+      "estrellas": 4,
+      "aceptaMascotas": false,
+      "servicios": ["wifi", "piscina", "spa", "restaurante"],
+      "habitaciones": [
+        {
+          "id": 14,
+          "tipo": "Individual",
+          "precio": 85,
+          "desayunoIncluido": true,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 15,
+          "tipo": "Doble",
+          "precio": 125,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 16,
+          "tipo": "Suite",
+          "precio": 210,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Pensión Santa Cruz",
+      "ciudad": "Sevilla",
+      "direccion": "Barrio Santa Cruz, 33",
+      "descripcion": "Encantadora pensión familiar en el corazón del barrio más tradicional de Sevilla.",
+      "imagen": "https://images.unsplash.com/photo-1517840901100-8179e982acb7?w=800",
+      "valoracion": 4.0,
+      "estrellas": 2,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "terraza"],
+      "habitaciones": [
+        {
+          "id": 17,
+          "tipo": "Individual",
+          "precio": 45,
+          "desayunoIncluido": false,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 18,
+          "tipo": "Doble",
+          "precio": 70,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Hotel Catalonia",
+      "ciudad": "Barcelona",
+      "direccion": "Rambla Catalunya, 56",
+      "descripcion": "Hotel boutique con diseño minimalista en una de las mejores zonas de Barcelona.",
+      "imagen": "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800",
+      "valoracion": 4.4,
+      "estrellas": 4,
+      "aceptaMascotas": false,
+      "servicios": ["wifi", "gimnasio", "bar", "parking"],
+      "habitaciones": [
+        {
+          "id": 19,
+          "tipo": "Individual",
+          "precio": 95,
+          "desayunoIncluido": true,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 20,
+          "tipo": "Doble",
+          "precio": 140,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Hotel Mediterráneo",
+      "ciudad": "Alicante",
+      "direccion": "Explanada de España, 10",
+      "descripcion": "Hotel frente al paseo marítimo con vistas al Mediterráneo.",
+      "imagen": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+      "valoracion": 4.3,
+      "estrellas": 3,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "piscina", "restaurante"],
+      "habitaciones": [
+        {
+          "id": 21,
+          "tipo": "Individual",
+          "precio": 70,
+          "desayunoIncluido": false,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 22,
+          "tipo": "Doble",
+          "precio": 105,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 23,
+          "tipo": "Suite",
+          "precio": 175,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Parador de Santiago",
+      "ciudad": "Santiago de Compostela",
+      "direccion": "Plaza del Obradoiro, 1",
+      "descripcion": "Histórico parador en un edificio del siglo XV frente a la catedral.",
+      "imagen": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800",
+      "valoracion": 4.9,
+      "estrellas": 5,
+      "aceptaMascotas": false,
+      "servicios": ["wifi", "restaurante", "spa", "jardín", "parking"],
+      "habitaciones": [
+        {
+          "id": 24,
+          "tipo": "Doble",
+          "precio": 180,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 25,
+          "tipo": "Suite",
+          "precio": 290,
+          "desayunoIncluido": true,
+          "capacidad": 3,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Hotel Urban",
+      "ciudad": "Madrid",
+      "direccion": "Carrera de San Jerónimo, 34",
+      "descripcion": "Hotel de diseño contemporáneo con galería de arte integrada.",
+      "imagen": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800",
+      "valoracion": 4.5,
+      "estrellas": 5,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "piscina", "gimnasio", "spa", "restaurante", "bar"],
+      "habitaciones": [
+        {
+          "id": 26,
+          "tipo": "Individual",
+          "precio": 110,
+          "desayunoIncluido": true,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 27,
+          "tipo": "Doble",
+          "precio": 165,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 28,
+          "tipo": "Suite",
+          "precio": 280,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Hotel Playa Blanca",
+      "ciudad": "Cádiz",
+      "direccion": "Paseo Marítimo, 99",
+      "descripcion": "Hotel playero con acceso directo a una de las mejores playas de Cádiz.",
+      "imagen": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=800",
+      "valoracion": 4.1,
+      "estrellas": 3,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "piscina", "parking"],
+      "habitaciones": [
+        {
+          "id": 29,
+          "tipo": "Individual",
+          "precio": 60,
+          "desayunoIncluido": false,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 30,
+          "tipo": "Doble",
+          "precio": 90,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Hostal Centro",
+      "ciudad": "Zaragoza",
+      "direccion": "Calle Alfonso I, 22",
+      "descripcion": "Hostal céntrico y económico perfecto para estancias cortas.",
+      "imagen": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+      "valoracion": 3.5,
+      "estrellas": 2,
+      "aceptaMascotas": false,
+      "servicios": ["wifi"],
+      "habitaciones": [
+        {
+          "id": 31,
+          "tipo": "Individual",
+          "precio": 40,
+          "desayunoIncluido": false,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 32,
+          "tipo": "Doble",
+          "precio": 55,
+          "desayunoIncluido": false,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Hotel Modernista",
+      "ciudad": "Valencia",
+      "direccion": "Plaza del Ayuntamiento, 15",
+      "descripcion": "Edificio modernista restaurado convertido en hotel boutique de lujo.",
+      "imagen": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+      "valoracion": 4.6,
+      "estrellas": 4,
+      "aceptaMascotas": false,
+      "servicios": ["wifi", "gimnasio", "restaurante", "bar"],
+      "habitaciones": [
+        {
+          "id": 33,
+          "tipo": "Doble",
+          "precio": 135,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 34,
+          "tipo": "Suite",
+          "precio": 230,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Hotel Pirineos",
+      "ciudad": "Jaca",
+      "direccion": "Avenida de Francia, 67",
+      "descripcion": "Hotel de montaña ideal para esquiadores y amantes de la naturaleza.",
+      "imagen": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
+      "valoracion": 4.4,
+      "estrellas": 3,
+      "aceptaMascotas": true,
+      "servicios": ["wifi", "parking", "restaurante", "guardaesquís"],
+      "habitaciones": [
+        {
+          "id": 35,
+          "tipo": "Individual",
+          "precio": 75,
+          "desayunoIncluido": true,
+          "capacidad": 1,
+          "imagen": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"
+        },
+        {
+          "id": 36,
+          "tipo": "Doble",
+          "precio": 110,
+          "desayunoIncluido": true,
+          "capacidad": 2,
+          "imagen": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"
+        },
+        {
+          "id": 37,
+          "tipo": "Suite",
+          "precio": 185,
+          "desayunoIncluido": true,
+          "capacidad": 4,
+          "imagen": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600"
+        }
+      ]
+    }
+  ]
+}

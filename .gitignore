@@ -1,0 +1,17 @@
+# Dependencias
+frontend/node_modules/
+
+# Builds
+frontend/build/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
