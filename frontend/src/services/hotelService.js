@@ -4,6 +4,8 @@ export const hotelService = {
     // Obtener todos los hoteles
     getAllHotels: async () => {
         try {
+            // Simular delay de 2 segundos
+            await new Promise(resolve => setTimeout(resolve, 2000));
             const response = await fetch(`${API_URL}/hotels`);
             if (!response.ok) {
                 throw new Error('Error al cargar hoteles');
