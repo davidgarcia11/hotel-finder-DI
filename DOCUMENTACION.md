@@ -1,6 +1,6 @@
 # Hotel Finder - Documentación del Proyecto
 
-**Alumno:** [Tu nombre completo]  
+**Alumno:** David Garcia Sesma  
 **Asignatura:** Diseño de Interfaces - 2º DAM  
 **Curso:** 2025-2026
 
