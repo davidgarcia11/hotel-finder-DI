@@ -47,7 +47,7 @@ function ListaHoteles() {
             const precioMin = getPrecioMinimo(hotel.habitaciones);
             const precioMatch = precioMin <= precioMax;
 
-            // Filtro de desayuno (si está activado, buscar hoteles con al menos una habitación con desayuno)
+            // Filtro de desayuno
             const desayunoMatch = !desayuno || hotel.habitaciones.some(h => h.desayunoIncluido);
 
             // Filtro de mascotas
@@ -62,7 +62,7 @@ function ListaHoteles() {
             } else if (ordenPrecio === 'desc') {
                 return getPrecioMinimo(b.habitaciones) - getPrecioMinimo(a.habitaciones);
             }
-            return 0; // Sin ordenar
+            return 0;
         });
 
     if (loading) return <Loading />;
@@ -72,55 +72,74 @@ function ListaHoteles() {
         <div style={styles.container}>
             <h1>Hoteles Disponibles</h1>
 
-            <PanelFiltros
-                busqueda={busqueda}
-                setBusqueda={setBusqueda}
-                precioMax={precioMax}
-                setPrecioMax={setPrecioMax}
-                desayuno={desayuno}
-                setDesayuno={setDesayuno}
-                mascotas={mascotas}
-                setMascotas={setMascotas}
-                ordenPrecio={ordenPrecio}
-                setOrdenPrecio={setOrdenPrecio}
-            />
+            <div style={styles.mainLayout}>
+                {/* Sidebar izquierdo con filtros */}
+                <aside style={styles.sidebar}>
+                    <PanelFiltros
+                        busqueda={busqueda}
+                        setBusqueda={setBusqueda}
+                        precioMax={precioMax}
+                        setPrecioMax={setPrecioMax}
+                        desayuno={desayuno}
+                        setDesayuno={setDesayuno}
+                        mascotas={mascotas}
+                        setMascotas={setMascotas}
+                        ordenPrecio={ordenPrecio}
+                        setOrdenPrecio={setOrdenPrecio}
+                    />
+                </aside>
 
-            <p style={styles.resultados}>
-                {hotelesFiltrados.length} {hotelesFiltrados.length === 1 ? 'hotel encontrado' : 'hoteles encontrados'}
-            </p>
+                {/* Contenido principal con hoteles */}
+                <main style={styles.mainContent}>
+                    <p style={styles.resultados}>
+                        {hotelesFiltrados.length} {hotelesFiltrados.length === 1 ? 'hotel encontrado' : 'hoteles encontrados'}
+                    </p>
 
-            {hotelesFiltrados.length === 0 ? (
-                <p style={styles.sinResultados}>No se encontraron hoteles con estos filtros</p>
-            ) : (
-                <div style={styles.grid}>
-                    {hotelesFiltrados.map(hotel => (
-                        <Tarjeta
-                            key={hotel.id}
-                            id={hotel.id}
-                            imagen={hotel.imagen}
-                            titulo={hotel.nombre}
-                            subtitulo={hotel.ciudad}
-                            precio={getPrecioMinimo(hotel.habitaciones)}
-                            link={`/hotel/${hotel.id}`}
-                        />
-                    ))}
-                </div>
-            )}
+                    {hotelesFiltrados.length === 0 ? (
+                        <p style={styles.sinResultados}>No se encontraron hoteles con estos filtros</p>
+                    ) : (
+                        <div style={styles.grid}>
+                            {hotelesFiltrados.map(hotel => (
+                                <Tarjeta
+                                    key={hotel.id}
+                                    id={hotel.id}
+                                    imagen={hotel.imagen}
+                                    titulo={hotel.nombre}
+                                    subtitulo={hotel.ciudad}
+                                    precio={getPrecioMinimo(hotel.habitaciones)}
+                                    link={`/hotel/${hotel.id}`}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </main>
+            </div>
         </div>
     );
 }
 
 const styles = {
     container: {
-        maxWidth: '1200px',
+        maxWidth: '1400px',
         margin: '0 auto',
         padding: '2rem',
     },
-    grid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    mainLayout: {
+        display: 'flex',
         gap: '2rem',
         marginTop: '2rem',
+    },
+    sidebar: {
+        width: '20%',
+        minWidth: '250px',
+    },
+    mainContent: {
+        flex: 1,
+    },
+    grid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: '1.5rem',
     },
     resultados: {
         fontSize: '1.1rem',
