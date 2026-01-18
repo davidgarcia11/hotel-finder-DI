@@ -3,14 +3,22 @@ import { hotelService } from '../services/hotelService';
 import Tarjeta from '../components/common/Tarjeta';
 import Loading from '../components/common/Loading';
 import ErrorMessage from '../components/common/ErrorMessage';
+import PanelFiltros from '../components/hoteles/PanelFiltros';
 
 function ListaHoteles() {
+    // Estado de datos
     const [hoteles, setHoteles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Estado de filtros
+    const [busqueda, setBusqueda] = useState('');
+    const [precioMax, setPrecioMax] = useState(500);
+    const [desayuno, setDesayuno] = useState(false);
+    const [mascotas, setMascotas] = useState(false);
+    const [ordenPrecio, setOrdenPrecio] = useState('');
+
     useEffect(() => {
-        // Llamar a la API cuando el componente se carga
         hotelService.getAllHotels()
             .then(data => {
                 setHoteles(data);
@@ -27,25 +35,77 @@ function ListaHoteles() {
         return Math.min(...habitaciones.map(h => h.precio));
     };
 
+    // Aplicar filtros
+    const hotelesFiltrados = hoteles
+        .filter(hotel => {
+            // Filtro de búsqueda por texto
+            const textoMatch =
+                hotel.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+                hotel.ciudad.toLowerCase().includes(busqueda.toLowerCase());
+
+            // Filtro de precio
+            const precioMin = getPrecioMinimo(hotel.habitaciones);
+            const precioMatch = precioMin <= precioMax;
+
+            // Filtro de desayuno (si está activado, buscar hoteles con al menos una habitación con desayuno)
+            const desayunoMatch = !desayuno || hotel.habitaciones.some(h => h.desayunoIncluido);
+
+            // Filtro de mascotas
+            const mascotasMatch = !mascotas || hotel.aceptaMascotas;
+
+            return textoMatch && precioMatch && desayunoMatch && mascotasMatch;
+        })
+        .sort((a, b) => {
+            // Ordenar por precio
+            if (ordenPrecio === 'asc') {
+                return getPrecioMinimo(a.habitaciones) - getPrecioMinimo(b.habitaciones);
+            } else if (ordenPrecio === 'desc') {
+                return getPrecioMinimo(b.habitaciones) - getPrecioMinimo(a.habitaciones);
+            }
+            return 0; // Sin ordenar
+        });
+
     if (loading) return <Loading />;
     if (error) return <ErrorMessage mensaje={error} />;
 
     return (
         <div style={styles.container}>
             <h1>Hoteles Disponibles</h1>
-            <div style={styles.grid}>
-                {hoteles.map(hotel => (
-                    <Tarjeta
-                        key={hotel.id}
-                        id={hotel.id}
-                        imagen={hotel.imagen}
-                        titulo={hotel.nombre}
-                        subtitulo={hotel.ciudad}
-                        precio={getPrecioMinimo(hotel.habitaciones)}
-                        link={`/hotel/${hotel.id}`}
-                    />
-                ))}
-            </div>
+
+            <PanelFiltros
+                busqueda={busqueda}
+                setBusqueda={setBusqueda}
+                precioMax={precioMax}
+                setPrecioMax={setPrecioMax}
+                desayuno={desayuno}
+                setDesayuno={setDesayuno}
+                mascotas={mascotas}
+                setMascotas={setMascotas}
+                ordenPrecio={ordenPrecio}
+                setOrdenPrecio={setOrdenPrecio}
+            />
+
+            <p style={styles.resultados}>
+                {hotelesFiltrados.length} {hotelesFiltrados.length === 1 ? 'hotel encontrado' : 'hoteles encontrados'}
+            </p>
+
+            {hotelesFiltrados.length === 0 ? (
+                <p style={styles.sinResultados}>No se encontraron hoteles con estos filtros</p>
+            ) : (
+                <div style={styles.grid}>
+                    {hotelesFiltrados.map(hotel => (
+                        <Tarjeta
+                            key={hotel.id}
+                            id={hotel.id}
+                            imagen={hotel.imagen}
+                            titulo={hotel.nombre}
+                            subtitulo={hotel.ciudad}
+                            precio={getPrecioMinimo(hotel.habitaciones)}
+                            link={`/hotel/${hotel.id}`}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
@@ -61,6 +121,17 @@ const styles = {
         gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
         gap: '2rem',
         marginTop: '2rem',
+    },
+    resultados: {
+        fontSize: '1.1rem',
+        color: '#666',
+        marginBottom: '1rem',
+    },
+    sinResultados: {
+        textAlign: 'center',
+        fontSize: '1.2rem',
+        color: '#999',
+        padding: '3rem',
     },
 };
 
