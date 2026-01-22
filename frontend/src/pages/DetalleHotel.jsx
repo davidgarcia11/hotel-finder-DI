@@ -5,6 +5,8 @@ import Tarjeta from '../components/common/Tarjeta';
 import Loading from '../components/common/Loading';
 import ErrorMessage from '../components/common/ErrorMessage';
 
+import ServiceTag from '../components/common/ServiceTag';
+
 function DetalleHotel() {
     const { id } = useParams(); // Obtiene el ID de la URL
     const [hotel, setHotel] = useState(null);
@@ -41,10 +43,9 @@ function DetalleHotel() {
                 <div style={styles.servicios}>
                     <h3>Servicios:</h3>
                     <div style={styles.serviciosGrid}>
+                        {/* 2. USAMOS EL COMPONENTE REUTILIZABLE */}
                         {hotel.servicios.map((servicio, index) => (
-                            <span key={index} style={styles.servicioTag}>
-                {servicio}
-              </span>
+                            <ServiceTag key={index} texto={servicio} />
                         ))}
                     </div>
                 </div>
@@ -118,13 +119,7 @@ const styles = {
         gap: '0.5rem',
         marginTop: '1rem',
     },
-    servicioTag: {
-        backgroundColor: '#e3f2fd',
-        padding: '0.5rem 1rem',
-        borderRadius: '20px',
-        fontSize: '0.9rem',
-        color: '#1976d2',
-    },
+
     mascotas: {
         fontSize: '1.1rem',
         color: '#4caf50',

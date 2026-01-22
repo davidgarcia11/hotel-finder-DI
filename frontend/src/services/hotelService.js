@@ -30,4 +30,17 @@ export const hotelService = {
             throw error;
         }
     },
-};
+
+    getPromociones: async () => {
+            try {
+                const response = await fetch(`${API_URL}/promociones`);
+                if (!response.ok) {
+                    throw new Error('Error al cargar promociones');
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error:', error);
+                throw error;
+        }
+    }
+    };

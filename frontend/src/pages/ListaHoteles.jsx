@@ -18,7 +18,11 @@ function ListaHoteles() {
     const [mascotas, setMascotas] = useState(false);
     const [ordenPrecio, setOrdenPrecio] = useState('');
 
+    // NUEVO: Estado para promociones
+    const [promociones, setPromociones] = useState([]);
+
     useEffect(() => {
+        // LLAMADA 1: Cargar Hoteles (Endpoint principal)
         hotelService.getAllHotels()
             .then(data => {
                 setHoteles(data);
@@ -28,6 +32,13 @@ function ListaHoteles() {
                 setError(err.message);
                 setLoading(false);
             });
+
+        // LLAMADA 2: Cargar Promociones (Nuevo endpoint - 3er requisito)
+        // Lo hacemos independiente para que si falla no rompa la página entera
+        hotelService.getPromociones()
+            .then(data => setPromociones(data))
+            .catch(err => console.error("Error cargando promociones:", err));
+
     }, []);
 
     // Calcular precio mínimo de cada hotel
@@ -38,25 +49,17 @@ function ListaHoteles() {
     // Aplicar filtros
     const hotelesFiltrados = hoteles
         .filter(hotel => {
-            // Filtro de búsqueda por texto
             const textoMatch =
                 hotel.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
                 hotel.ciudad.toLowerCase().includes(busqueda.toLowerCase());
-
-            // Filtro de precio
             const precioMin = getPrecioMinimo(hotel.habitaciones);
             const precioMatch = precioMin <= precioMax;
-
-            // Filtro de desayuno
             const desayunoMatch = !desayuno || hotel.habitaciones.some(h => h.desayunoIncluido);
-
-            // Filtro de mascotas
             const mascotasMatch = !mascotas || hotel.aceptaMascotas;
 
             return textoMatch && precioMatch && desayunoMatch && mascotasMatch;
         })
         .sort((a, b) => {
-            // Ordenar por precio
             if (ordenPrecio === 'asc') {
                 return getPrecioMinimo(a.habitaciones) - getPrecioMinimo(b.habitaciones);
             } else if (ordenPrecio === 'desc') {
@@ -73,7 +76,6 @@ function ListaHoteles() {
             <h1>Hoteles Disponibles</h1>
 
             <div style={styles.mainLayout}>
-                {/* Sidebar izquierdo con filtros */}
                 <aside style={styles.sidebar}>
                     <PanelFiltros
                         busqueda={busqueda}
@@ -89,8 +91,23 @@ function ListaHoteles() {
                     />
                 </aside>
 
-                {/* Contenido principal con hoteles */}
                 <main style={styles.mainContent}>
+                    {/* NUEVO: Banner de Promociones */}
+                    {promociones.length > 0 && (
+                        <div style={styles.promoBanner}>
+                            <h3 style={styles.promoTitle}>🔥 Ofertas Flash</h3>
+                            <div style={styles.promoGrid}>
+                                {promociones.map(promo => (
+                                    <div key={promo.id} style={styles.promoItem}>
+                                        <span>{promo.titulo}</span>
+                                        <span style={styles.promoCode}>Código: {promo.codigo}</span>
+                                        <span style={styles.promoDiscount}>-{promo.descuento}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
                     <p style={styles.resultados}>
                         {hotelesFiltrados.length} {hotelesFiltrados.length === 1 ? 'hotel encontrado' : 'hoteles encontrados'}
                     </p>
@@ -118,6 +135,7 @@ function ListaHoteles() {
     );
 }
 
+// Actualiza los estilos al final del archivo para incluir el banner
 const styles = {
     container: {
         maxWidth: '1400px',
@@ -152,6 +170,46 @@ const styles = {
         color: '#999',
         padding: '3rem',
     },
+    // NUEVOS ESTILOS
+    promoBanner: {
+        backgroundColor: '#fff3e0',
+        border: '1px solid #ffe0b2',
+        borderRadius: '8px',
+        padding: '1rem',
+        marginBottom: '2rem',
+    },
+    promoTitle: {
+        color: '#e65100',
+        marginTop: 0,
+        marginBottom: '0.5rem',
+        fontSize: '1.2rem',
+    },
+    promoGrid: {
+        display: 'flex',
+        gap: '1rem',
+        flexWrap: 'wrap',
+    },
+    promoItem: {
+        backgroundColor: 'white',
+        padding: '0.5rem 1rem',
+        borderRadius: '4px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+        fontSize: '0.9rem',
+    },
+    promoCode: {
+        fontWeight: 'bold',
+        color: '#333',
+        backgroundColor: '#eee',
+        padding: '2px 6px',
+        borderRadius: '4px',
+    },
+    promoDiscount: {
+        color: '#d32f2f',
+        fontWeight: 'bold',
+    }
 };
 
 export default ListaHoteles;

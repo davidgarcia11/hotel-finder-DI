@@ -506,5 +506,19 @@
         }
       ]
     }
+  ],
+  "promociones": [
+    {
+      "id": 1,
+      "titulo": "¡Oferta de Verano!",
+      "descuento": "20%",
+      "codigo": "VERANO2025"
+    },
+    {
+      "id": 2,
+      "titulo": "Escapada Romántica",
+      "descuento": "15%",
+      "codigo": "LOVE15"
+    }
   ]
 }
